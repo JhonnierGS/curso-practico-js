@@ -42,6 +42,37 @@ const calcularTriangulo = (ladoTriangulo1,ladoTriangulo2, ladoTrianguloBase, alt
   }
 }
 
+const calularTrianguloIsoceles = (lados, base) => {
+
+  if(lados == base){
+    console.log('este no es un triangulo isoceles')
+  }else{
+    // h = raizCuadrada(lados ** 2 - (b**2)/4)
+    return Math.sqrt((lados ** 2) - ((base**2) / 4));
+  }
+}
+
+function calcularAlturaTrianguloEscaleno(a, b, c) {
+  let a = lado1;
+  let b = lado2;
+  let c = lado3;
+  if (a == b || b == c || c == a) {
+    return false
+  } else {
+    // Si es escaleno, calculamos primero su area
+    let s = (a + b + c) / 2;
+    let area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+
+    // Ahora usamos que A = bh/2, por lo que h = 2A/b
+    let altura_a = Math.floor(2 * area / a);
+    let altura_b = Math.floor(2 * area / b);
+    let altura_c = Math.floor(2 * area / c);
+
+    // IMPTE: No se especifica cual de las alturas se quiere, tras probar el codigo conclui que se busca la altura respecto a 'a' como base
+    return altura_a;
+  }
+}
+
 const btnCalcularTriangulo = document.getElementById('btnCalcularTriangulo');
 btnCalcularTriangulo.addEventListener('click', (e) => {
   event.preventDefault();
